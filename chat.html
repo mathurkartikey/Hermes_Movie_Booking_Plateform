@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chat</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar" onclick="go('index.html')">
+  🎬 Hermes
+</div>
+
+<button class="back-btn" onclick="go('groups.html')">⬅ Back</button>
+
+<h2>Group Chat</h2>
+
+<!-- SHOW INFO -->
+<p id="showInfo"></p>
+
+<!-- CHAT BOX -->
+<div class="chat-box" id="chatBox"></div>
+
+<!-- INPUT -->
+<div class="chat-input">
+  <input id="msg" placeholder="Type message..." />
+  <button onclick="send()">Send 🚀</button>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* ===== SHOW INFO ===== */
+const theatre = localStorage.getItem("theatre");
+const time = localStorage.getItem("time");
+
+if (theatre && time) {
+  document.getElementById("showInfo").innerText =
+    theatre + " - " + time;
+}
+
+/* ===== CHAT FUNCTION ===== */
+function send() {
+  const msgInput = document.getElementById("msg");
+  const chatBox = document.getElementById("chatBox");
+
+  const text = msgInput.value.trim();
+  if (!text) return;
+
+  // Your message
+  const myMsg = document.createElement("div");
+  myMsg.classList.add("message", "sent");
+  myMsg.innerText = text;
+
+  chatBox.appendChild(myMsg);
+
+  // Fake reply
+  setTimeout(() => {
+    const reply = document.createElement("div");
+    reply.classList.add("message", "received");
+    reply.innerText = "Nice! See you 🎬";
+
+    chatBox.appendChild(reply);
+    chatBox.scrollTop = chatBox.scrollHeight;
+  }, 1000);
+
+  msgInput.value = "";
+  chatBox.scrollTop = chatBox.scrollHeight;
+}
+</script>
+
+</body>
+</html>

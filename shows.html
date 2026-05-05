@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shows</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar" onclick="go('index.html')">
+  🎬 Hermes
+</div>
+
+<h2>Select Show</h2>
+
+<div class="card">
+  <p><b>INOX - 7:00 PM</b></p>
+
+  <div class="btn-group">
+    <button onclick="go('groups.html')">👥 Watch With Others</button>
+    <button onclick="goSeats('INOX','7:00 PM')">🎟️ Book Ticket</button>
+  </div>
+</div>
+
+<div class="card">
+  <p><b>PVR - 9:30 PM</b></p>
+
+  <div class="btn-group">
+    <button onclick="go('groups.html')">👥 Watch With Others</button>
+    <button onclick="goSeats('PVR','9:30 PM')">🎟️ Book Ticket</button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

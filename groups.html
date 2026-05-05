@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Groups</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="topbar" onclick="go('index.html')">
+  🎬 Hermes
+</div>
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2>Groups</h2>
+
+<p id="showInfo"></p>
+
+<!-- GROUP LIST -->
+<div id="groupList"></div>
+
+<!-- CREATE GROUP -->
+<div class="card">
+  <h3>Create Group</h3>
+
+  <input id="desc" placeholder="Description">
+  <input id="maxPeople" placeholder="Max People">
+
+  <select id="groupType">
+    <option value="public">🌍 Public</option>
+    <option value="private">🔒 Private</option>
+    <option value="female_only">👩 Female Only</option>
+  </select>
+
+  <button onclick="createGroup()">Create</button>
+</div>
+
+<button onclick="go('chat.html')">Join & Chat 💬</button>
+
+<script src="script.js"></script>
+
+<script>
+const theatre = localStorage.getItem("theatre");
+const time = localStorage.getItem("time");
+
+if (theatre && time) {
+  document.getElementById("showInfo").innerText =
+    theatre + " - " + time;
+}
+
+loadGroups();
+</script>
+
+</body>
+</html>

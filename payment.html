@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar" onclick="go('index.html')">
+  🎬 Hermes
+</div>
+
+<button class="back-btn" onclick="goBack()">⬅ Back</button>
+
+<h2>Payment</h2>
+
+<!-- BOOKING INFO -->
+<div class="card">
+  <p id="showInfo"></p>
+  <p>Seats: <span id="seatInfo">None</span></p>
+  <p>Total: ₹<span id="totalPrice">0</span></p>
+</div>
+
+<!-- PAYMENT FORM -->
+<div class="card">
+
+  <input type="text" placeholder="Card Number">
+  <input type="text" placeholder="Name on Card">
+  <input type="text" placeholder="Expiry Date">
+  <input type="password" placeholder="CVV">
+
+  <button onclick="payNow()">Pay Now 💳</button>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* ===== SHOW INFO ===== */
+const theatre = localStorage.getItem("theatre");
+const time = localStorage.getItem("time");
+
+if (theatre && time) {
+  document.getElementById("showInfo").innerText =
+    theatre + " - " + time;
+}
+
+/* ===== SEAT INFO ===== */
+const seats = localStorage.getItem("selectedSeats");
+const total = localStorage.getItem("totalPrice");
+
+if (seats) {
+  document.getElementById("seatInfo").innerText = seats;
+}
+
+if (total) {
+  document.getElementById("totalPrice").innerText = total;
+}
+
+/* ===== PAYMENT FUNCTION ===== */
+function payNow() {
+  alert("Payment Successful 🎉");
+
+  // clear booking data
+  localStorage.removeItem("selectedSeats");
+  localStorage.removeItem("totalPrice");
+
+  window.location.href = "index.html";
+}
+</script>
+
+</body>
+</html>
